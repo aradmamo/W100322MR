@@ -25,6 +25,11 @@ export class ArticleBodyComponent implements OnInit {
         for (const k in this.form.value) {
             this.article[k] = this.form.value[k];
         }
+           if (this.alternativeImage) {
+            this.article.image = this.alternativeImage;
+            this.article.imageName = this.alternativeImageName;
+        }
+
 
         const sub = this.http.put<void>("article", this.article).subscribe(() => {
             sub.unsubscribe();
